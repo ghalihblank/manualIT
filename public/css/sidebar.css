@@ -1,0 +1,19 @@
+
+.sidebar .sidebar__footer {
+    position:absolute;
+    bottom:20px;
+    padding-left: 10px;
+    /* margin-bottom: 10; */
+
+}
+
+.sidebar__footer span {
+    margin-left: 50px;
+}
+.sidebar__footer i {
+    margin-left: 10px;
+    position: fixed;
+}
+  
+  
+  

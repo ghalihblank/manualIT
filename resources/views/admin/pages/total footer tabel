@@ -1,0 +1,75 @@
+<script>
+    $(document).ready( function () {
+        var table = $('#tbl-salesc').DataTable({  
+            "paging":false,"searching": false, "ordering": false,"info": false, 
+            "autowidth":true, "lengthChange": true,         
+            "footerCallback": function(row, data, start, end, display) {
+                var api = this.api();
+
+                api.columns([0], {
+                page: 'current'
+                }).every(function() { }, 0);
+                    $('#tbl-salesc tfoot tr').append('<th></th>');
+                api.columns([1], {
+                page: 'current'
+                }).every(function() { }, 0);
+                    $('#tbl-salesc tfoot tr').append('<th style="text-align:center">Total</th>');
+
+                api.columns([2, 3], {
+                page: 'current'
+                }).every(function() {
+                    var sum = this
+                    .data()
+                    .reduce(function(a, b) {
+                    var x = parseFloat(a) || 0;
+                    var y = parseFloat(b) || 0;
+                    return x + y;
+                    }, 0);
+
+                    $('#tbl-salesc tfoot tr').append('<th style="text-align:right">' + sum + '</th>');
+                });
+
+            } 
+            
+            
+        });
+
+
+    } );
+</script>
+
+<script>
+    $(document).ready( function () {
+            var table = $('#tbl-sales').DataTable({  
+                "paging":false,"searching": false,"ordering": false,"info": false,
+                "autowidth":false, "lengthChange": false, 
+                "footerCallback": function(row, data, start, end, display) {
+                    var api = this.api();
+
+                    api.columns([0], {
+                    page: 'current'
+                    }).every(function() { }, 0);
+                        $('#tbl-sales tfoot tr').append('<th></th>');
+                    api.columns([1], {
+                    page: 'current'
+                    }).every(function() { }, 0);
+                        $('#tbl-sales tfoot tr').append('<th style="text-align:center">Total</th>');
+
+                    api.columns([2, 3], {
+                    page: 'current'
+                    }).every(function() {
+                        var sum = this
+                        .data()
+                        .reduce(function(a, b) {
+                        var x = parseFloat(a) || 0;
+                        var y = parseFloat(b) || 0;
+                        return x + y;
+                        }, 0);
+
+                        $('#tbl-sales tfoot tr').append('<th style="text-align:right">' + sum + '</th>');
+                    });
+
+                }            
+            });
+        } );
+</script>
